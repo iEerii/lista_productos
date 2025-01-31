@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router"
 import ProductList from "./components/ProductList"
-import DetailsProduct from "./components/DetailsProduct"
+import Product from "./components/Product"
 
 function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<ProductList />}  />
-			<Route path="/details" element={<DetailsProduct />} />
+			<Route path="/product_details" element={<Product />} />
 		</Routes>
 	)
 }
