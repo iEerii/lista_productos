@@ -1,7 +1,9 @@
 import { useParams } from "react-router"
-import useProduct from "../hooks/useProducts"
-import { ProductType } from "../types";
 import { useEffect, useState } from "react";
+import { ProductType } from "../types";
+import { formatCurrency } from "../helpers";
+import useProduct from "../hooks/useProducts"
+
 import axios from "axios";
 
 const Product = () => {
@@ -26,13 +28,21 @@ const Product = () => {
     }
 
   	return (
-		<div className="row">
-			<div className="col-12">
-				<h2>{product?.title}</h2>
+		  <div className="row">
+			<div className="col-sm-2 offset-md-2 mt-5">
+				<img src={product?.image} alt={product?.title} width="200" />
+			</div>
+			<div className="col-sm-4 mt-5">
+				<p className="fs-3 fw-bolder">{product?.title}</p>
+                <p className="fw-bold">{formatCurrency(product?.price ?? 0)}</p>
                 <p>{product?.description}</p>
-                <img src={product?.image} alt={product?.title} width="200" />
-                <p>Precio: ${product?.price}</p>
-                <p>Categoría: {product?.category}</p>
+				<div className="d-flex justify-content-end pt-2">
+					<button 
+						className="p-2 bg-dark text-light fw-bold border-0"
+					>
+						Agregar al carrito
+					</button>
+				</div>
 			</div>
 		</div>
 	)
